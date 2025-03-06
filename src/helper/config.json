@@ -1,0 +1,4 @@
+{
+  "connectionString": "//YOUR MONGODB URI",
+  "secret": "token123OK"
+}

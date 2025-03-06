@@ -1,0 +1,18 @@
+[
+    {
+        "id_department": 8,
+        "nama_jabatan": "FullStack Developer"
+    },
+    {
+        "id_department": 7,
+        "nama_jabatan": "BackEnd Developer"
+    },
+    {
+        "id_department": 6,
+        "nama_jabatan": "FrontEnd Developer"
+    },
+    {
+        "id_department": 5,
+        "nama_jabatan": "HRD"
+    }
+]

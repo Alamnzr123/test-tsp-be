@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Habib Rahmat",
+        "id_jabatan": 1,
+        "age": 26,
+        "gender": "L",
+        "tanggal_lahir": "1994-06-22",
+        "alamat": "Jl. Alhambra",
+        "role": "Production Manager",
+        "nama_product": "Bosch Besi 12cm",
+        "jumlah": 200,
+        "work_order": "ME-001",
+        "tenggat_waktu": "24-03-2025",
+        "status": "InProgress"
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "id_department": 1,
+        "nama_department": "Business Development"
+    },
+    {
+        "id_department": 2,
+        "nama_department": "Finance"
+    },
+    {
+        "id_department": 3,
+        "nama_department": "General Affairs"
+    },
+    {
+        "id_department": 4,
+        "nama_department": "IT Development"
+    },
+    {
+        "id_department": 5,
+        "nama_department": "HRD"
+    },
+    {
+        "id_department": 6,
+        "nama_department": "FrontEnd Developer"
+    },
+    {
+        "id_department": 7,
+        "nama_department": "BackEnd Developer"
+    },
+    {
+        "id_department": 8,
+        "nama_department": "FullStack Developer"
+    }
+]
