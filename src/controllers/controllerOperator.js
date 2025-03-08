@@ -22,7 +22,7 @@ const ControllerOperator = {
             //     console.log(project.title); // 'My Title'
             // }
 
-            const user = await table_operator.findOne({ where: { name: req.body.name } });
+            const user = await table_operator.findOne({ where: { nama_operator: req.body.nama_operator } });
             console.log(user);
             if (user) {
                 const token = jwt.sign({ sub: user.id, role: user.role }, config.secret, {
@@ -30,7 +30,7 @@ const ControllerOperator = {
                 });
                 res.json({ user, message: "User logged in", token })
             } else {
-                res.status(400).json({ message: "password incorect" });
+                res.status(400).json({ message: "Nama Operator tidak ada." });
             }
 
 

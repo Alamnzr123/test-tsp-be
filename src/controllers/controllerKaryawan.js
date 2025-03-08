@@ -6,7 +6,6 @@ const { table_operator } = require('../models');
 const jwt = require("jsonwebtoken");
 const Role = require("../helper/role.js");
 
-const bcrypt = require("bcryptjs");
 const config = require("../helper/config.json");
 const { where } = require('sequelize');
 
@@ -16,36 +15,17 @@ const ControllerKaryawan = {
 
     authentication: async function (req, res, next) {
         try {
-
-            // const project = await table_karyawan.findOne({ where: { age: 11 } });
-            // if (project === null) {
-            //     console.log('Not found!');
-            // } else {
-            //     console.log(project instanceof table_karyawan); // true
-            //     console.log(project.title); // 'My Title'
-            // }
-
             const user = await table_karyawan.findOne({ where: { name: req.body.name } });
-            console.log(user);
+            console.log(user.dataValues);
+
             if (user) {
-                const token = jwt.sign({ sub: user.id, role: user.role }, config.secret, {
+                const token = jwt.sign({ sub: user.dataValues.id, role: user.dataValues.role }, config.secret, {
                     expiresIn: "7h"
                 });
                 res.json({ user, message: "User logged in", token })
             } else {
                 res.status(400).json({ message: "password incorect" });
             }
-
-
-            // if (user) {
-            //     const token = jwt.sign({ sub: user.id, role: user.role }, config.secret, {
-            //         expiresIn: "7h"
-            //     });
-
-            //     res.json({ user, message: "User logged in", token })
-            // } else {
-            //     res.status(400).json({ message: "name incorect" });
-            // }
         }
         catch (err) {
             next(err);
@@ -54,14 +34,6 @@ const ControllerKaryawan = {
 
     getAllFilterStatus: async function (req, res, next) {
         try {
-            // const currentUser = req.user;
-            // console.log(currentUser);
-
-
-            // if (currentUser.role !== Role.Admin) {
-            //     return res.status(401).json({ message: "Not Authorized!" });
-            // }
-
             const data = await table_karyawan.findAll({
                 include: [
                     {
@@ -92,13 +64,13 @@ const ControllerKaryawan = {
     getAll: async function (req, res, next) {
         try {
 
-            // const currentUser = req.user;
-            // console.log(currentUser);
+            const currentUser = req.user;
+            console.log(currentUser);
 
 
-            // if (currentUser.role !== Role.Admin) {
-            //     return res.status(401).json({ message: "Not Authorized!" });
-            // }
+            if (currentUser.role !== Role.User) {
+                return res.status(401).json({ message: "Not Authorized!" });
+            }
 
             const data = await table_karyawan.findAll({
                 include: [
@@ -124,13 +96,14 @@ const ControllerKaryawan = {
 
     create: async function (req, res, next) {
         try {
-            const user = await table_karyawan.findOne({ name: req.name });
+
+            const user = await table_karyawan.findOne({ where: { name: req.body.name } });
 
             const { name, id_jabatan, age, gender, tanggal_lahir, alamat, role, work_order, nama_product, jumlah, tenggat_waktu, status } = req.body;
 
-            // if (user) {
-            //     return res.status(400).json({ message: "User already exists" });
-            // }
+            if (user) {
+                return res.status(400).json({ message: "User already exists" });
+            }
             try {
                 if (role === "Operator") {
                     const dataOperator = await table_operator.create({
@@ -260,7 +233,7 @@ const ControllerKaryawan = {
                     id
                 }
             });
-            res.status(200).json({ message: 'Karyawan deleted' });
+            res.status(200).json({ Data: data, message: 'Karyawan deleted' });
         } catch (err) {
             next(err);
         }
