@@ -52,4 +52,20 @@ npx sequelize-cli db:migrate
 npm run start
 ```
 
-6. Try every API method on Postman Which i have been tested with the following files TEST-PT TRI SINAR PURNAMA.postman_collection.json
+6. HARUS BUAT DATA USER DAHULU DI BACKEND
+
+7. SETELAH AKUN USER DIBUAT LOGIN DENGAN API DI BAWAH INI
+```
+localhost:3000/karyawan/authenticate
+```
+
+8. KEMUDIAN TOKEN LOGIN DIDAPAT DAN BISA DIAKSES APLIKASI
+
+9. Try every API method on Postman Which i have been tested with the following files TEST-PT TRI SINAR PURNAMA.postman_collection.json
+
+
+# Authentication
+
+1. Aplikasi ini memiliki 3 Akses yaitu USER, OPERATOR DAN ADMIN
+
+2. Untuk Autorisasi menggunakan Jsonwebtoken
