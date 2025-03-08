@@ -12,14 +12,14 @@ const { where } = require('sequelize');
 
 const ControllerKaryawan = {
 
-
     authentication: async function (req, res, next) {
         try {
             const user = await table_karyawan.findOne({ where: { name: req.body.name } });
-            console.log(user.dataValues);
+            console.log(user);
+
 
             if (user) {
-                const token = jwt.sign({ sub: user.dataValues.id, role: user.dataValues.role }, config.secret, {
+                const token = jwt.sign({ sub: user.id, role: user.role }, config.secret, {
                     expiresIn: "7h"
                 });
                 res.json({ user, message: "User logged in", token })
@@ -63,7 +63,6 @@ const ControllerKaryawan = {
 
     getAll: async function (req, res, next) {
         try {
-
             const currentUser = req.user;
             console.log(currentUser);
 

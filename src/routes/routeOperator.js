@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const ControllerOperator = require('../controllers/controllerOperator');
-// const jwt = require("../helper/jwt");
-// const Role = require("../helper/role");
+const jwt = require("../helper/jwt");
+const Role = require("../helper/role");
 
-router.get('/', ControllerOperator.getAll);
-router.get('/:id', ControllerOperator.getOne);
-router.put('/:id', ControllerOperator.update);
-router.post('/authenticate', ControllerOperator.authentication);
+router.get('/', jwt(Role.Operator), ControllerOperator.getAll);
+router.get('/:id', jwt(Role.Operator), ControllerOperator.getOne);
+router.put('/:id', jwt(Role.Operator), ControllerOperator.update);
 
 module.exports = router;

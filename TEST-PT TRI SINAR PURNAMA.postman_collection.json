@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "2aba6afb-610c-4e2e-998f-dd765b14ba27",
+		"name": "TEST-PT TRI SINAR PURNAMA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15530359"
+	},
+	"item": [
+		{
+			"name": "POST DATA",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Message</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.message}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"05\",\r\n    \"id_jabatan\": 1,\r\n    \"age\" : 23,\r\n    \"gender\": \"female\",\r\n    \"tanggal_lahir\" : \"10 februari 1988\",\r\n    \"role\": \"Admin\",\r\n    \"alamat\" : \"Jakarta\",\r\n    \"work_order\": \"ME-002\",\r\n    \"nama_product\" : \"Plat Besi 12cm\",\r\n    \"jumlah\" : 22,\r\n    \"tenggat_waktu\" : \"2025/02/12\",\r\n    \"status\" : \"InProgress\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/karyawan/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST AUTHENTICATION OPERATOR",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama_operator\": \"01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/operator/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operator",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL DATA",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0MTQxODI4MSwiZXhwIjoxNzQxNDQzNDgxfQ.8dyfdXAGDCyxRCYM26Z-d1Aee302H1BAmfMTQ9Ra0Gs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/karyawan/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT DATA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Susanti\",\r\n    \"id_jabatan\": 1,\r\n    \"age\" : 22,\r\n    \"gender\": \"female\",\r\n    \"tanggal_lahir\" : \"20 agustus 2000\",\r\n    \"role\": \"Admin\",\r\n    \"alamat\" : \"medan\",\r\n    \"work_order\": \"ME-001\",\r\n    \"nama_product\" : \"Bosch 12cm\",\r\n    \"jumlah\" : 12,\r\n    \"tenggat_waktu\" : \"2025/02/12\",\r\n    \"status\" : \"Completed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/karyawan/4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE DATA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/karyawan/4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET OPERATOR DATA",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJPcGVyYXRvciIsImlhdCI6MTc0MTMzMTI1NSwiZXhwIjoxNzQxMzU2NDU1fQ.p2-oeIXvTlw98lTCuum4S-FzB8-Gehy632jv29OIlpQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/operator/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operator",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY ID OPERATOR DATA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/operator/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operator",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT OPERATOR DATA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama_operator\" : \"03\",\r\n    \"work_order\": \"ME-003\",\r\n    \"nama_product\" : \"Besi 200cm\",\r\n    \"jumlah\" : 200,\r\n    \"status\" : \"InProgress\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/operator/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operator",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST AUTHENTICATION KARYAWAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"05\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/karyawan/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET KARYAWAN DATA BY ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/karyawan/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET FILTER DATA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/karyawan/filter",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -2,63 +2,23 @@ const { table_operator } = require('../models/index.js');
 const { table_karyawan } = require('../models/index.js');
 
 const jwt = require("jsonwebtoken");
-const Role = require("../helper/role.js");
+const Role = require("../helper/role")
 
-const bcrypt = require("bcryptjs");
 const config = require("../helper/config.json");
 const { where } = require('sequelize');
 
 
 const ControllerOperator = {
 
-    authentication: async function (req, res, next) {
-        try {
-
-            // const project = await table_karyawan.findOne({ where: { age: 11 } });
-            // if (project === null) {
-            //     console.log('Not found!');
-            // } else {
-            //     console.log(project instanceof table_karyawan); // true
-            //     console.log(project.title); // 'My Title'
-            // }
-
-            const user = await table_operator.findOne({ where: { nama_operator: req.body.nama_operator } });
-            console.log(user);
-            if (user) {
-                const token = jwt.sign({ sub: user.id, role: user.role }, config.secret, {
-                    expiresIn: "7h"
-                });
-                res.json({ user, message: "User logged in", token })
-            } else {
-                res.status(400).json({ message: "Nama Operator tidak ada." });
-            }
-
-
-            // if (user) {
-            //     const token = jwt.sign({ sub: user.id, role: user.role }, config.secret, {
-            //         expiresIn: "7h"
-            //     });
-
-            //     res.json({ user, message: "User logged in", token })
-            // } else {
-            //     res.status(400).json({ message: "name incorect" });
-            // }
-        }
-        catch (err) {
-            next(err);
-        }
-    },
-
     getAll: async function (req, res, next) {
         try {
+            const currentUser = req.user;
+            console.log(currentUser);
 
-            // const currentUser = req.user;
-            // console.log(currentUser);
 
-
-            // if (currentUser.role !== Role.Admin) {
-            //     return res.status(401).json({ message: "Not Authorized!" });
-            // }
+            if (currentUser.role !== Role.Operator) {
+                return res.status(401).json({ message: "Not Authorized!" });
+            }
 
             const data = await table_operator.findAll({
                 include: [
@@ -83,6 +43,15 @@ const ControllerOperator = {
 
     getOne: async function (req, res, next) {
         try {
+
+            const currentUser = req.user;
+            console.log(currentUser);
+
+
+            if (currentUser.role !== Role.Operator) {
+                return res.status(401).json({ message: "Not Authorized!" });
+            }
+
             const { id } = req.params;
             const data = await table_operator.findByPk(id, {
                 include: [
@@ -99,6 +68,14 @@ const ControllerOperator = {
 
     update: async function (req, res, next) {
         try {
+            const currentUser = req.user;
+            console.log(currentUser);
+
+
+            if (currentUser.role !== Role.Operator) {
+                return res.status(401).json({ message: "Not Authorized!" });
+            }
+
             console.log(req.body, '<<< req.body');
             const { id } = req.params;
             const {
