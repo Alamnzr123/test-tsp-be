@@ -27,12 +27,10 @@ function jwtVerify(roles = [], status = []) {
       }
 
       const verified = jwt.verify(token, secret);
-      console.log(verified);
 
       req.user = verified;
-      req.user.status = user.status;
-      req.user.role = user.role;
-
+      req.user.role = verified.role;
+      // req.user.status = verified.status;
       next();
     }
   ]

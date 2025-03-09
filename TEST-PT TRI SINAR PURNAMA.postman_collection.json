@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "2aba6afb-610c-4e2e-998f-dd765b14ba27",
 		"name": "TEST-PT TRI SINAR PURNAMA",
+		"description": "Author : RAHMAD ALAMSYAH NAZARUDDIN",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15530359"
 	},
@@ -51,7 +52,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"05\",\r\n    \"id_jabatan\": 1,\r\n    \"age\" : 23,\r\n    \"gender\": \"female\",\r\n    \"tanggal_lahir\" : \"10 februari 1988\",\r\n    \"role\": \"Admin\",\r\n    \"alamat\" : \"Jakarta\",\r\n    \"work_order\": \"ME-002\",\r\n    \"nama_product\" : \"Plat Besi 12cm\",\r\n    \"jumlah\" : 22,\r\n    \"tenggat_waktu\" : \"2025/02/12\",\r\n    \"status\" : \"InProgress\"\r\n}",
+					"raw": "{\r\n    \"name\" : \"Sudirman\",\r\n    \"id_jabatan\": 1,\r\n    \"age\" : 23,\r\n    \"gender\": \"Male\",\r\n    \"tanggal_lahir\" : \"10 februari 1988\",\r\n    \"role\": \"Admin\",\r\n    \"alamat\" : \"Medan\",\r\n    \"work_order\": \"ME-003\",\r\n    \"nama_product\" : \"Plat Besi 12cm\",\r\n    \"jumlah\" : 22,\r\n    \"tenggat_waktu\" : \"2025/02/12\",\r\n    \"status\" : \"InProgress\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +112,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0MTQxODI4MSwiZXhwIjoxNzQxNDQzNDgxfQ.8dyfdXAGDCyxRCYM26Z-d1Aee302H1BAmfMTQ9Ra0Gs",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0MTUwODQwNiwiZXhwIjoxNzQxNTMzNjA2fQ.Dt1IjTMg1_ruZbZn5LDjVKzXhmir738D8tyLTwAzsRQ",
 							"type": "string"
 						}
 					]
@@ -284,7 +285,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"05\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Sudirman\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -344,6 +345,57 @@
 					"path": [
 						"karyawan",
 						"filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL DATA OPERATOR",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0MTUwODI5MywiZXhwIjoxNzQxNTMzNDkzfQ.gwQjrc-3-SQPrKxUZYsVjbKC3pVw8qmAMnk02Wxwj2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/operator/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operator",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET DATA KARYAWAN BY ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/karyawan/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"karyawan",
+						"2"
 					]
 				}
 			},

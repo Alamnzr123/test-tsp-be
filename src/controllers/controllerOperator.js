@@ -13,8 +13,6 @@ const ControllerOperator = {
     getAll: async function (req, res, next) {
         try {
             const currentUser = req.user;
-            console.log(currentUser);
-
 
             if (currentUser.role !== Role.Operator) {
                 return res.status(401).json({ message: "Not Authorized!" });

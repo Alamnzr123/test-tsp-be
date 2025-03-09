@@ -16,6 +16,32 @@ This repo include Backend that buid using NodeJS. For Frontend clone this Repo
 Tech Stack : NodeJS
 Database : PostgreSQL
 
+## FLOW APLIKASI
+
+- Pertama, Buka Frontend Aplikasi 
+```
+http://localhost:5173/
+```
+
+- Kedua, Registrasikan dahulu Departement dan Jabatan
+
+```
+http://localhost:5173/add-department
+http://localhost:5173/jabatan
+```
+
+- Ketiga, Registrasikan Karyawan baru
+
+```
+http://localhost:5173/add-edit-karyawan
+```
+
+- Keempat, Login Sesuai Authorisasi, Jika Login sebagai Operator Maka Data Operator yang Keluar
+
+```
+http://localhost:5173/login
+```
+
 # Installation
 
 ```

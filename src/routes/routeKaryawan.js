@@ -4,7 +4,7 @@ const ControllerKaryawan = require('../controllers/controllerKaryawan');
 const Role = require("../helper/role");
 const jwt = require('../helper/jwt');
 
-router.get('/', jwt(Role.User), ControllerKaryawan.getAll);
+router.get('/', ControllerKaryawan.getAll);
 router.get('/filter', ControllerKaryawan.getAllFilterStatus);
 router.post('/', ControllerKaryawan.create);
 router.get('/:id', ControllerKaryawan.getOne);

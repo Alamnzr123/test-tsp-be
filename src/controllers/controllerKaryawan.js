@@ -63,14 +63,6 @@ const ControllerKaryawan = {
 
     getAll: async function (req, res, next) {
         try {
-            const currentUser = req.user;
-            console.log(currentUser);
-
-
-            if (currentUser.role !== Role.User) {
-                return res.status(401).json({ message: "Not Authorized!" });
-            }
-
             const data = await table_karyawan.findAll({
                 include: [
                     {
